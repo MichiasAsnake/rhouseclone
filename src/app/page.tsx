@@ -268,29 +268,62 @@ export default function Home() {
       </section>
 
       {/* R House Intro Section */}
-      <section className="py-24 bg-gradient-to-b from-black to-gray-900">
-        <div className="container">
+      <section className="min-h-screen relative flex items-center justify-center bg-black">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src={images.luxuryInterior.url}
+            alt={images.luxuryInterior.alt}
+            fill
+            className="object-cover opacity-60"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black" />
+        </div>
+
+        <div className="container relative z-10">
           <motion.div 
-            className="text-center space-y-8"
+            className="max-w-6xl mx-auto"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <Image
-              src="/r-house-logo.svg"
-              alt="R House Logo"
-              width={120}
-              height={120}
-              className="mx-auto"
-            />
-            <motion.h2 
-              className="heading-lg"
+            {/* Logo and Text Container */}
+            <div className="space-y-12">
+              <motion.div variants={fadeIn} className="flex items-center gap-6">
+                <Image
+                  src="/r-house-logo.svg"
+                  alt="R House Logo"
+                  width={80}
+                  height={80}
+                  className="w-20 md:w-24"
+                />
+                <h3 className="text-3xl md:text-4xl tracking-widest font-light">HOUSE</h3>
+              </motion.div>
+
+              <motion.h2 
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-widest leading-tight"
+                variants={fadeIn}
+              >
+                THE WORLD'S FIRST<br />PREMIUM<br />RECOVERY LOUNGE
+              </motion.h2>
+            </div>
+
+            {/* Image Credit */}
+            <motion.div
               variants={fadeIn}
+              className="absolute bottom-8 left-0 right-0 text-center"
             >
-              THE WORLD&apos;S FIRST PREMIUM<br />
-              RECOVERY LOUNGE
-            </motion.h2>
+              <Link
+                href={images.luxuryInterior.credit.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+              >
+            
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>

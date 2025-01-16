@@ -10,6 +10,14 @@ export interface UnsplashImage {
 // Using direct Unsplash URLs for simplicity
 // In a production environment, you should use the Unsplash API with proper authentication
 export const images: Record<string, UnsplashImage> = {
+  luxuryInterior: {
+    url: 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=1600&q=80',
+    alt: 'Luxury modern interior with ambient lighting',
+    credit: {
+      name: 'Ricardo Gomez Angel',
+      link: 'https://unsplash.com/@ripato'
+    }
+  },
   gymBackground: {
     url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80',
     alt: 'Modern gym interior with equipment',
