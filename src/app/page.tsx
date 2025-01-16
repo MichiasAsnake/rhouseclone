@@ -218,7 +218,7 @@ export default function Home() {
               className="heading-lg"
               variants={fadeIn}
             >
-              THE WORLD'S FIRST PREMIUM<br />
+              THE WORLD&apos;S FIRST PREMIUM<br />
               RECOVERY LOUNGE
             </motion.h2>
           </motion.div>
