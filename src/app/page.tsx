@@ -50,6 +50,11 @@ const newsArticles = [
 ];
 
 export default function Home() {
+  const scrollToNextSection = () => {
+    const nextSection = document.getElementById('next-section');
+    nextSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -81,21 +86,72 @@ export default function Home() {
           transition={{ delay: 1.2, duration: 0.8 }}
         >
           <motion.div
-            className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center cursor-pointer"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
+            onClick={scrollToNextSection}
+            className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <svg 
-              className="w-4 h-4 text-white" 
-              fill="none" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth="2" 
-              viewBox="0 0 24 24" 
+            <svg
+              className="w-4 h-4 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
               stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+              <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* World Doesn't Need Section */}
+      <section id="next-section" className="min-h-screen relative flex items-center justify-center bg-black">
+        <div className="absolute inset-0">
+          <Image
+            src={images.gymBackground.url}
+            alt={images.gymBackground.alt}
+            fill
+            className="object-cover opacity-30"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80" />
+        </div>
+        <motion.div 
+          className="container relative z-10 text-center space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <motion.h2 
+            className="text-5xl md:text-6xl lg:text-7xl font-light tracking-widest leading-tight"
+            variants={fadeIn}
+          >
+            BUT THE WORLD<br />
+            DOESN&apos;T NEED<br />
+            ANOTHER GYM
+          </motion.h2>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light"
+            variants={fadeIn}
+          >
+            Or another cycle studio, sushi restaurant, or grocery store.
+          </motion.p>
+          <motion.div
+            variants={fadeIn}
+            className="mt-8"
+          >
+            <Link
+              href={images.gymBackground.credit.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              Photo by {images.gymBackground.credit.name} on Unsplash
+            </Link>
           </motion.div>
         </motion.div>
       </section>
