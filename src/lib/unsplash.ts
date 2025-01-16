@@ -73,5 +73,29 @@ export const images: Record<string, UnsplashImage> = {
       name: 'Dane Wetton',
       link: 'https://unsplash.com/@danewetton'
     }
+  },
+  storefront: {
+    url: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80',
+    alt: 'Modern retail storefront with glass windows',
+    credit: {
+      name: 'Francesca Tosolini',
+      link: 'https://unsplash.com/@fromitaly'
+    }
+  },
+  brandedHoodie: {
+    url: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1600&q=80',
+    alt: 'Person wearing a branded hoodie',
+    credit: {
+      name: 'Tobias Tullius',
+      link: 'https://unsplash.com/@tobiastu'
+    }
+  },
+  leatherTexture: {
+    url: 'https://images.unsplash.com/photo-1601140782842-a41f1a6855c2?w=1600&q=80',
+    alt: 'Premium black marble texture',
+    credit: {
+      name: 'Pawel Czerwinski',
+      link: 'https://unsplash.com/@pawel_czerwinski'
+    }
   }
 }; 

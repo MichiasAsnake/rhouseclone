@@ -417,6 +417,123 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Just the Beginning Section */}
+      <section className="min-h-screen bg-black relative py-32">
+        <motion.div 
+          className="container relative"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          {/* Main Text */}
+          <div className="text-center mb-24">
+            <motion.h2 
+              className="text-6xl md:text-7xl lg:text-8xl font-light tracking-widest mb-8"
+              variants={fadeIn}
+            >
+              JUST THE BEGINNING.
+            </motion.h2>
+            <motion.p 
+              className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light"
+              variants={fadeIn}
+            >
+              We&apos;re launching our flagship location in Toronto as the first site for the R-House global brand
+            </motion.p>
+          </div>
+
+          {/* Staggered Image Layout */}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Storefront Image */}
+            <motion.div
+              className="relative w-full md:w-2/3 mb-12 ml-auto"
+              variants={{
+                hidden: { opacity: 0, x: 100 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.8 } }
+              }}
+            >
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <Image
+                  src={images.storefront.url}
+                  alt={images.storefront.alt}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+              <div className="mt-2 text-right">
+                <Link
+                  href={images.storefront.credit.link}
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Photo by {images.storefront.credit.name}
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Branded Hoodie Image */}
+            <motion.div
+              className="relative w-full md:w-1/2 mb-12"
+              variants={{
+                hidden: { opacity: 0, x: -100 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.3 } }
+              }}
+            >
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={images.brandedHoodie.url}
+                  alt={images.brandedHoodie.alt}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+              <div className="mt-2">
+                <Link
+                  href={images.brandedHoodie.credit.link}
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Photo by {images.brandedHoodie.credit.name}
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Leather Texture Image */}
+            <motion.div
+              className="relative w-full md:w-3/4 ml-auto"
+              variants={{
+                hidden: { opacity: 0, x: 100 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.8, delay: 0.6 } }
+              }}
+            >
+              <div className="relative aspect-[16/9] overflow-hidden">
+                <Image
+                  src={images.leatherTexture.url}
+                  alt={images.leatherTexture.alt}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </div>
+              <div className="mt-2 text-right">
+                <Link
+                  href={images.leatherTexture.credit.link}
+                  className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Photo by {images.leatherTexture.credit.name}
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-24 bg-black">
         <div className="container">
