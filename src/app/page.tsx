@@ -157,61 +157,75 @@ export default function Home() {
       </section>
 
       {/* Rise of Recovery Section */}
-      <section className="py-40 bg-black">
-        <div className="container">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+      <section className="min-h-screen bg-black flex flex-col items-center justify-center py-24">
+        <motion.div 
+          className="container text-center mb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <motion.h2 
+            className="text-6xl md:text-7xl lg:text-8xl font-light tracking-widest mb-8"
             variants={fadeIn}
           >
-            <div className="space-y-6">
-              <motion.h2 
-                className="heading-lg"
-                variants={fadeIn}
+            THE RISE OF<br />RECOVERY
+          </motion.h2>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light"
+            variants={fadeIn}
+          >
+            The world needs a new kind of place.<br />
+            A place to recover. Rebuild. Restore. Reconnect.
+          </motion.p>
+        </motion.div>
+
+        <motion.div 
+          className="container"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {newsArticles.map((article, index) => (
+              <motion.div
+                key={article.title}
+                className="relative aspect-[4/3] group overflow-hidden"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      delay: index * 0.2
+                    }
+                  }
+                }}
               >
-                THE RISE OF<br />RECOVERY
-              </motion.h2>
-              <motion.p 
-                className="text-lg text-gray-300"
-                variants={fadeIn}
-              >
-                The world needs a new kind of place.<br />
-                A place to recover. Rebuild. Restore. Reconnect.
-              </motion.p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {newsArticles.map((article, index) => (
-                <motion.div
-                  key={article.title}
-                  className="relative aspect-[4/3] overflow-hidden rounded-lg"
-                  variants={fadeIn}
-                  custom={index}
-                >
-                  <Image
-                    src={article.image.url}
-                    alt={article.image.alt}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
-                    <h3 className="text-sm font-bold">{article.title}</h3>
-                    <p className="text-xs text-gray-300">{article.source}</p>
-                    <Link
-                      href={article.image.credit.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs text-gray-400 hover:text-white transition-colors mt-2"
-                    >
-                      Photo by {article.image.credit.name}
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+                <Image
+                  src={article.image.url}
+                  alt={article.image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
+                  <p className="text-sm text-gray-400 mb-2">{article.source}</p>
+                  <h3 className="text-xl font-semibold mb-4">{article.title}</h3>
+                  <Link
+                    href={article.image.credit.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-gray-500 hover:text-white transition-colors"
+                  >
+                    Photo by {article.image.credit.name}
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Introducing Section */}
