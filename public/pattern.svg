@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <pattern id="pattern" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+    <path d="M60 10L100 30V90L60 110L20 90V30L60 10Z" stroke="white" stroke-width="1" stroke-opacity="0.05"/>
+  </pattern>
+  <rect width="100%" height="100%" fill="url(#pattern)"/>
+</svg> 

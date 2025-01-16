@@ -1,100 +1,327 @@
-import Image from "next/image";
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import ServiceCard from '@/components/ServiceCard';
+import { images } from '@/lib/unsplash';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+};
+
+const services = [
+  {
+    title: 'RED LIGHT THERAPY',
+    image: images.redLightTherapy,
+    description: 'Advanced light therapy for recovery and rejuvenation.'
+  },
+  {
+    title: 'COMPRESSION',
+    image: images.compression,
+    description: 'Dynamic compression therapy for muscle recovery.'
+  },
+  {
+    title: 'IV THERAPY',
+    image: images.ivTherapy,
+    description: 'Customized IV treatments for optimal wellness.'
+  }
+];
+
+const newsArticles = [
+  {
+    title: 'How to Recover Like an Elite Athlete',
+    source: 'The New York Times',
+    image: images.nytArticle
+  },
+  {
+    title: 'Why You Need Rest and Recovery',
+    source: 'VeryWell Fit',
+    image: images.verywellArticle
+  },
+  {
+    title: 'The Rise of Recovery',
+    source: 'The Globe and Mail',
+    image: images.globeArticle
+  }
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex flex-col">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center bg-black text-white py-32">
+        <motion.div 
+          className="container text-center space-y-12"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1 
+            className="text-6xl md:text-7xl lg:text-8xl font-light tracking-widest"
+            variants={fadeIn}
+          >
+            IMAGINE
+          </motion.h1>
+          <motion.p 
+            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light"
+            variants={fadeIn}
+          >
+            Being the first money into Equinox, Soul Cycle, Nobu or Whole Foods.
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-16"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+        >
+          <motion.div
+            className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center cursor-pointer"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            <svg 
+              className="w-4 h-4 text-white" 
+              fill="none" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </motion.div>
+        </motion.div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Rise of Recovery Section */}
+      <section className="py-40 bg-black">
+        <div className="container">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <div className="space-y-6">
+              <motion.h2 
+                className="heading-lg"
+                variants={fadeIn}
+              >
+                THE RISE OF<br />RECOVERY
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-gray-300"
+                variants={fadeIn}
+              >
+                The world needs a new kind of place.<br />
+                A place to recover. Rebuild. Restore. Reconnect.
+              </motion.p>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {newsArticles.map((article, index) => (
+                <motion.div
+                  key={article.title}
+                  className="relative aspect-[4/3] overflow-hidden rounded-lg"
+                  variants={fadeIn}
+                  custom={index}
+                >
+                  <Image
+                    src={article.image.url}
+                    alt={article.image.alt}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end">
+                    <h3 className="text-sm font-bold">{article.title}</h3>
+                    <p className="text-xs text-gray-300">{article.source}</p>
+                    <Link
+                      href={article.image.credit.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-gray-400 hover:text-white transition-colors mt-2"
+                    >
+                      Photo by {article.image.credit.name}
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Introducing Section */}
+      <section className="py-40 bg-black">
+        <div className="container">
+          <motion.div
+            className="text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  duration: 1,
+                  ease: "easeOut"
+                }
+              }
+            }}
+          >
+            <motion.h2 
+              className="text-6xl md:text-7xl lg:text-8xl font-light tracking-widest"
+              variants={{
+                hidden: { opacity: 0, letterSpacing: "0.2em" },
+                visible: {
+                  opacity: 1,
+                  letterSpacing: "0.3em",
+                  transition: {
+                    duration: 1.2,
+                    ease: "easeOut"
+                  }
+                }
+              }}
+            >
+              INTRODUCING...
+            </motion.h2>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* R House Intro Section */}
+      <section className="py-24 bg-gradient-to-b from-black to-gray-900">
+        <div className="container">
+          <motion.div 
+            className="text-center space-y-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="/r-house-logo.svg"
+              alt="R House Logo"
+              width={120}
+              height={120}
+              className="mx-auto"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <motion.h2 
+              className="heading-lg"
+              variants={fadeIn}
+            >
+              THE WORLD'S FIRST PREMIUM<br />
+              RECOVERY LOUNGE
+            </motion.h2>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-24 bg-black">
+        <div className="container">
+          <motion.div 
+            className="text-center space-y-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <motion.h2 
+              className="heading-lg"
+              variants={fadeIn}
+            >
+              PROVEN THERAPIES<br />
+              IN AN UPSCALE<br />
+              ENVIRONMENT
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {services.map((service) => (
+                <ServiceCard
+                  key={service.title}
+                  title={service.title}
+                  image={service.image}
+                  description={service.description}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-24 bg-black">
+        <div className="container">
+          <motion.div 
+            className="text-center space-y-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <motion.h2 
+              className="heading-lg mb-8"
+              variants={fadeIn}
+            >
+              INTERESTED?
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-300 max-w-2xl mx-auto"
+              variants={fadeIn}
+            >
+              If you think the world needs another coffee shop or sushi restaurant, we wish you the best.<br /><br />
+              If you're ready to be part of an elite wellness and recovery brand, we're taking calls with investors
+              who want to join this movement.
+            </motion.p>
+            <motion.form 
+              className="max-w-md mx-auto space-y-6 mt-12"
+              variants={fadeIn}
+            >
+              <Input
+                type="text"
+                placeholder="Full Name*"
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Email*"
+                required
+              />
+              <Input
+                type="tel"
+                placeholder="Phone Number*"
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Assistant Email"
+              />
+              <Button
+                type="submit"
+                className="w-full"
+              >
+                SUBMIT
+              </Button>
+            </motion.form>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 bg-black border-t border-gray-900">
+        <div className="container">
+          <p className="text-center text-gray-500 text-sm">
+            © 2023 R House. All Rights Reserved.
+          </p>
+        </div>
       </footer>
     </div>
   );
