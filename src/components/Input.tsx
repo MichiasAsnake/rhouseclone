@@ -1,5 +1,5 @@
 import { motion, HTMLMotionProps } from 'framer-motion';
-import { InputHTMLAttributes, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface InputProps extends Omit<HTMLMotionProps<"input">, "error"> {

@@ -278,7 +278,7 @@ export default function Home() {
               variants={fadeIn}
             >
               If you think the world needs another coffee shop or sushi restaurant, we wish you the best.<br /><br />
-              If you're ready to be part of an elite wellness and recovery brand, we're taking calls with investors
+              If you&apos;re ready to be part of an elite wellness and recovery brand, we&apos;re taking calls with investors
               who want to join this movement.
             </motion.p>
             <motion.form 
