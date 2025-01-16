@@ -295,9 +295,52 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Proven Therapies Section */}
+      <section className="min-h-screen bg-black relative flex items-center justify-center py-32">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('/r-pattern.svg')] opacity-5" />
+        
+        <motion.div 
+          className="container relative text-center space-y-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <div className="space-y-6">
+            <motion.h2 
+              className="text-5xl md:text-6xl lg:text-7xl font-light tracking-widest leading-tight"
+              variants={fadeIn}
+            >
+              PROVEN THERAPIES<br />
+              IN AN UPSCALE<br />
+              ENVIRONMENT
+            </motion.h2>
+          </div>
+
+          <motion.div 
+            className="space-y-6 text-xl md:text-2xl font-light tracking-wider"
+            variants={fadeIn}
+          >
+            <p>
+              <span className="font-medium">PROVEN</span> RECOVERY MODALITIES.
+            </p>
+            <p>
+              <span className="font-medium">BACKED</span> BY SCIENCE.
+            </p>
+            <p>
+              <span className="font-medium">TRUSTED</span> BY SPORTS SCIENTISTS.
+            </p>
+          </motion.div>
+        </motion.div>
+      </section>
+
       {/* Services Section */}
-      <section className="py-24 bg-black">
-        <div className="container">
+      <section className="min-h-screen bg-black relative py-32">
+        {/* Background pattern */}
+        <div className="absolute inset-0 bg-[url('/r-pattern.svg')] opacity-5" />
+        
+        <div className="container relative">
           <motion.div 
             className="text-center space-y-16"
             initial="hidden"
@@ -306,21 +349,35 @@ export default function Home() {
             variants={fadeIn}
           >
             <motion.h2 
-              className="heading-lg"
+              className="text-5xl md:text-6xl lg:text-7xl font-light tracking-widest"
               variants={fadeIn}
             >
-              PROVEN THERAPIES<br />
-              IN AN UPSCALE<br />
-              ENVIRONMENT
+              SERVICES
             </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service) => (
-                <ServiceCard
+            
+            {/* Hexagonal grid layout */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto">
+              {services.map((service, index) => (
+                <motion.div
                   key={service.title}
-                  title={service.title}
-                  image={service.image}
-                  description={service.description}
-                />
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        delay: index * 0.2
+                      }
+                    }
+                  }}
+                  className={index === 1 ? 'md:mt-32' : ''}
+                >
+                  <ServiceCard
+                    title={service.title}
+                    image={service.image}
+                    description={service.description}
+                  />
+                </motion.div>
               ))}
             </div>
           </motion.div>
