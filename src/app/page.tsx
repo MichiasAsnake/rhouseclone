@@ -131,7 +131,7 @@ export default function Home() {
             variants={fadeIn}
           >
             BUT THE WORLD<br />
-            DOESN&apos;T NEED<br />
+            DOESN'T NEED<br />
             ANOTHER GYM
           </motion.h2>
           <motion.p 
@@ -306,7 +306,7 @@ export default function Home() {
                 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-widest leading-tight"
                 variants={fadeIn}
               >
-                THE WORLD'S FIRST<br />PREMIUM<br />RECOVERY LOUNGE
+                THE WORLD&apos;S FIRST<br />PREMIUM<br />RECOVERY LOUNGE
               </motion.h2>
             </div>
 
@@ -438,7 +438,7 @@ export default function Home() {
               className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light"
               variants={fadeIn}
             >
-              We&apos;re launching our flagship location in Toronto as the first site for the R-House global brand
+              We're launching our flagship location in Toronto as the first site for the R-House global brand
             </motion.p>
           </div>
 
@@ -555,7 +555,7 @@ export default function Home() {
               variants={fadeIn}
             >
               If you think the world needs another coffee shop or sushi restaurant, we wish you the best.<br /><br />
-              If you&apos;re ready to be part of an elite wellness and recovery brand, we&apos;re taking calls with investors
+              If you're ready to be part of an elite wellness and recovery brand, we're taking calls with investors
               who want to join this movement.
             </motion.p>
             <motion.form 

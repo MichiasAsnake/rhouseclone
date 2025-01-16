@@ -91,11 +91,11 @@ export const images: Record<string, UnsplashImage> = {
     }
   },
   leatherTexture: {
-    url: 'https://images.unsplash.com/photo-1601140782842-a41f1a6855c2?w=1600&q=80',
-    alt: 'Premium black marble texture',
+    url: 'https://images.unsplash.com/photo-1617957718614-8c23f060c2d0?w=1600&q=80',
+    alt: 'Luxury black fabric texture',
     credit: {
-      name: 'Pawel Czerwinski',
-      link: 'https://unsplash.com/@pawel_czerwinski'
+      name: 'Milad Fakurian',
+      link: 'https://unsplash.com/@miladfakurian'
     }
   }
 }; 
